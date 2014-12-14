@@ -1,0 +1,30 @@
+#showcase {
+  width: 100%;
+  text-align: center;
+  
+}
+#showcase h2 {
+  font-size: 4em;
+}
+
+#marketing-text form {
+  font-size: 2em;
+}
+
+#marketing-text label {
+  margin-right: 0.5em;
+}
+
+#marketing-text form small {
+  display: block;
+  font-size: 0.75em;
+}
+
+#marketing-text form input.loading {
+  background:url("/assets/img/loading.gif") no-repeat right center;
+}
+
+.selected {
+  border: 3px solid orange;
+  background-color: orange;
+}

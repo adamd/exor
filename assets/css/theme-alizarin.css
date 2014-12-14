@@ -1,0 +1,76 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Alizarin
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Alizarin Color 				: #e74c3c for branding
+ * Alizarin Dark Color			: #bc3e31 link and button hover
+*/
+body{
+	border-color: #e74c3c;
+}
+#logo a{
+	background: #e74c3c;
+}
+#features i{
+	color: #e74c3c;
+}
+.social-icons a{
+	color: #e74c3c;
+}
+.social-icons a:hover{
+	color: #bc3e31;
+}
+.form-control:focus {
+  border-color: #e74c3c;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #bc3e31;
+  border-color: #bc3e31;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #bc3e31;
+  border-color: #bc3e31;
+}

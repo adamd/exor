@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Lato Google Font - For Theme -->        
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <!-- Default Theme Style -->
+    <link href="assets/css/theme-dark.css" rel="stylesheet" media="screen">
+    <!-- Theme Color  options - alizarin.css, belize-hole.css, carrot.css, turquoise.css, wisteria.css-->
+    <link href="assets/css/theme-turquoise.css" rel="stylesheet" media="screen">
+    <!-- Non-theme CSS -->
+    <link href="assets/css/custom.css" rel="stylesheet" media="screen">
+    <!-- Pacifico Google Font - For Demo Purpose only -->    
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!--Below CSS is for demo purpose only-->
+    <style type="text/css">
+	.turquoise,a.turquoise:hover{color: #1abc9c;}
+	 #features h3{ padding-bottom:20px; border-bottom: solid 1px #464b4f; margin-bottom:30px;}
+	 #showcase{ margin:40px 0 0;}
+	 .showcase-inner{text-align: center; margin-bottom:30px;}
+	 .showcase-media{ height:300px; overflow: hidden; border:solid 1px #464b4f;  border-radius: 5px; position:relative; text-align:center;}
+	 .showcase-media img{margin:0 auto;}
+	 .showcase-media a{background:#2a2f32; padding:10px; display:block; -webkit-transition:all .2s ease-in-out; -moz-transition:all .2s ease-in-out;transition:all .2s ease-in-out;}
+	 .showcase-media a:hover{ background:#464b4f; }
+	 .showcase-desc{ padding:10px; text-align: center;}
+	 @media (min-width: 1200px) {
+		 #marketing-text{margin-top:40px;}
+	 }
+	</style>
+  </head>
+  <body>
+    <div class="container">
+    	<div class="row">     
+            <section id="marketing-text">
+                <div class="col-md-12 col-sm-12">
+                	<h1>Executive Orders by President</h1>
+                    <p><form id="search"><label for"q">Enter a search term</label>
+                    <input type="search" id="q" />
+                    <small>try <a href="#search">freedom</a>, <a href="#search">immigration</a>, <a href="#search">terrorism</a></small></form></p>
+                </div><!--12-->
+            </section><!--/marketing-text-->  
+                       
+            <section id="showcase" class="clearfix">
+                <div class="col-md-4 col-sm-4 selected" id="clinton">
+                  <img src="assets/img/clinton.jpg" width="410" class="img-responsive" alt="Bill Clinton" />
+		  <h2>308</h2>
+                  <p>Every <strong id="clinton-days">9.48</strong> days</p>
+                </div><!--/4-->
+
+                <div class="col-md-4 col-sm-4" id="bush">
+                  <img src="assets/img/bush.jpg" width="410" class="img-responsive" alt="George W. Bush" />
+		  <h2>287</h2>
+                  <p>Every <strong id="bush-days">10.18</strong> days</p>
+                </div><!--/4-->
+
+                <div class="col-md-4 col-sm-4" id="obama">
+                  <img src="assets/img/obama.jpg" width="410" class="img-responsive" alt="Barack Obama" />
+		  <h2>192</h2>
+                  <p>Every <strong id="obama-days">11.20</strong> days*</p>
+                </div><!--/4-->
+                
+            </section><!--showcase-->  
+            
+	    <section id="features">
+            	<div class="col-md-12 col-sm-12"><h3 class="text-center">Search Results</h3></div>
+                <div class="col-md-12 col-sm-12">
+                  <table id="results"></table>
+                </div><!--12-->
+            </section><!--features-->
+            
+			<footer>            
+                <div class="col-md-12 col-sm-12">                	
+                    <small><i>Built by <a href="http://adamd.org">AdamD</a> on <a href="http://orchestrate.io">Orchestrate</a>.</i></small>
+                </div><!--/12-->
+            </footer>
+
+        </div><!--/row-->
+    </div><!--/container-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <script src="screenshots/jquery.hoverIntent.minified.js"></script>
+    <script type="text/javascript">
+	$(function(){
+		var scrolled=0,
+		    $parH = $('.showcase-media'),
+			$parAnchor = $parH.find('a');
+			$imgH = $parAnchor.children().height();
+
+		$parAnchor.hoverIntent(makeTall, makeShort);
+	    function makeTall(){$(this).parent().animate({ scrollTop: $imgH }, 6000);}
+        function makeShort(){$(this).parent().animate({ scrollTop: 0 }, 200);}
+		});
+	</script>
+  </body>
+</html>
