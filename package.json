@@ -1,0 +1,17 @@
+{
+  "name": "exor",
+  "version": "0.1",
+  "description": "Search Executive Orders",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "hapi": "6.5.1",
+    "orchestrate": "0.3.4",
+    "handlebars": "2.0.0-alpha.4"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
