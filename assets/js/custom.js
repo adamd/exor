@@ -1,5 +1,5 @@
 // GLOBALS
-var last_search = "";
+var last_search = "*";
 
 $(document).ready(listeners);
 
@@ -48,6 +48,7 @@ function disable_search() {
   $('#search input').addClass("loading");
 }
 function call_search(q) {
+  fade_details(0);
   $('#showcase div').removeClass("selected");
   disable_search();
   last_search = q;
@@ -73,6 +74,7 @@ function clear_search() {
   update_president('clinton', 308);
   update_president('bush', 287);
   update_president('obama', 192);
+  last_search = "*";
 }
 
 function update_president(prez, count) {
@@ -96,6 +98,7 @@ function update_president(prez, count) {
 
 // FUNCTIONS FOR DETAIL SEARCH
 function call_details(prez, q, pg) {
+  fade_details(0);
   $.getJSON("/details/" + prez + "/" + encodeURIComponent(q) + "/" + pg, function(data) {
     $('#results').html("");
     $.each(data.results, function(i, item) {
@@ -104,6 +107,10 @@ function call_details(prez, q, pg) {
         $('<td>').text(item.title)
       );
       tr.appendTo("#results");
+      fade_details(1);
     });
   });
+}
+function fade_details(opacity) {
+  $('#features').fadeTo(500, opacity);
 }
