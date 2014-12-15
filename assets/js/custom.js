@@ -19,6 +19,18 @@ function listeners() {
     e.preventDefault();
     suggested_search($(e.target).text());
   });
+
+  // Search details clicked
+  $('#showcase h2 a').click(function(e) {
+    e.preventDefault();
+    $('#showcase div').removeClass("selected");
+
+    var pdiv = $(e.target).parent().parent();
+    pdiv = $(e.target).closest("div");
+    var prez = pdiv.attr("id");
+    pdiv.addClass("selected");
+    call_details(prez, last_search, 1);
+  });
 }
 
 
@@ -36,6 +48,7 @@ function disable_search() {
   $('#search input').addClass("loading");
 }
 function call_search(q) {
+  $('#showcase div').removeClass("selected");
   disable_search();
   last_search = q;
   $.getJSON("/search/" + encodeURIComponent(q), function(data) {
@@ -43,7 +56,7 @@ function call_search(q) {
       update_president(key, val);
     });
     enable_search();
-    call_details('clinton', last_search, 1);
+    //call_details('clinton', last_search, 1);
   });
 }
 function suggested_search(q) {
@@ -64,7 +77,7 @@ function clear_search() {
 
 function update_president(prez, count) {
   // Update count
-  $('#' + prez + ' h2').text(count);
+  $('#' + prez + ' h2 a').text(count);
 
   // Update per day
   obamadays = 2151; // as of December 12, 2014
@@ -84,6 +97,7 @@ function update_president(prez, count) {
 // FUNCTIONS FOR DETAIL SEARCH
 function call_details(prez, q, pg) {
   $.getJSON("/details/" + prez + "/" + encodeURIComponent(q) + "/" + pg, function(data) {
+    $('#results').html("");
     $.each(data.results, function(i, item) {
       var tr = $('<tr>').append(
         $('<td>').text(item.signed_date),
