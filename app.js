@@ -12,8 +12,7 @@ var serverOptions = {
         path: Path.join(__dirname, 'templates')
     }
 };
-//var server = new Hapi.Server(3000, serverOptions);
-var server = new Hapi.Server(~~process.env.PORT || 3000, '0.0.0.0');
+var server = new Hapi.Server(~~process.env.PORT || 3000, '0.0.0.0', serverOptions);
 
 // Home page
 server.route({
