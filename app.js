@@ -12,7 +12,7 @@ var serverOptions = {
         path: Path.join(__dirname, 'templates')
     }
 };
-var server = new Hapi.Server(3000, serverOptions);
+var server = new Hapi.Server(80, serverOptions);
 
 // Home page
 server.route({
