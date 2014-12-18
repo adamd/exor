@@ -48,6 +48,10 @@ function disable_search() {
   $('#search input').addClass("loading");
 }
 function call_search(q) {
+  if (q.trim().length == 0) {
+    return;
+  }
+
   fade_details(0);
   $('#showcase div').removeClass("selected");
   disable_search();
@@ -75,6 +79,8 @@ function clear_search() {
   update_president('bush', 287);
   update_president('obama', 192);
   last_search = "*";
+  $("#features").fadeOut();
+  $('#showcase div').removeClass("selected");
 }
 
 function update_president(prez, count) {
@@ -85,14 +91,21 @@ function update_president(prez, count) {
   obamadays = 2151; // as of December 12, 2014
   twotermdays = 2922; // Bush and Clinton both have same 
 
-  var days = 0;
-  if (prez == "obama") {
-    days = obamadays / count;
+  var days;
+
+  if (count == 0) {
+    days = 0;
   }
   else {
-    days = twotermdays / count;
+    days = 0;
+    if (prez == "obama") {
+      days = obamadays / count;
+    }
+    else {
+      days = twotermdays / count;
+    }
+    days = days.toFixed(2);
   }
-  days = days.toFixed(2);
   $('#' + prez + '-days').text(days);
 }
 
@@ -102,9 +115,10 @@ function call_details(prez, q, pg) {
   $.getJSON("/details/" + prez + "/" + encodeURIComponent(q) + "/" + pg, function(data) {
     $('#results').html("");
     $.each(data.results, function(i, item) {
+      var link = $('<a>').attr('href', item.url).text(item.title);
       var tr = $('<tr>').append(
         $('<td>').text(item.signed_date),
-        $('<td>').text(item.title)
+        $('<td>').append($('<a>').text(item.title).attr('href', item.url))
       );
       tr.appendTo("#results");
       fade_details(1);
