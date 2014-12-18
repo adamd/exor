@@ -70,7 +70,7 @@ function suggested_search(q) {
   call_search(q);
 }
 function check_search() {
-  if ($('#q').val().length == 0) {
+  if ($('#q').val().length == 0 && last_search != "*") {
     clear_search();
   }
 }
