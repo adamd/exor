@@ -24,21 +24,6 @@
       <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-    <!--Below CSS is for demo purpose only-->
-    <style type="text/css">
-	.turquoise,a.turquoise:hover{color: #1abc9c;}
-	 #features h3{ padding-bottom:20px; border-bottom: solid 1px #464b4f; margin-bottom:30px;}
-	 #showcase{ margin:40px 0 0;}
-	 .showcase-inner{text-align: center; margin-bottom:30px;}
-	 .showcase-media{ height:300px; overflow: hidden; border:solid 1px #464b4f;  border-radius: 5px; position:relative; text-align:center;}
-	 .showcase-media img{margin:0 auto;}
-	 .showcase-media a{background:#2a2f32; padding:10px; display:block; -webkit-transition:all .2s ease-in-out; -moz-transition:all .2s ease-in-out;transition:all .2s ease-in-out;}
-	 .showcase-media a:hover{ background:#464b4f; }
-	 .showcase-desc{ padding:10px; text-align: center;}
-	 @media (min-width: 1200px) {
-		 #marketing-text{margin-top:40px;}
-	 }
-	</style>
   </head>
   <body>
     <div class="container">
@@ -98,20 +83,6 @@
     <script src="assets/js/custom.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/bootstrap.min.js"></script>
-    
-    <script src="screenshots/jquery.hoverIntent.minified.js"></script>
     <script src="assets/js/jquery.countTo.js"></script>
-    <script type="text/javascript">
-	$(function(){
-		var scrolled=0,
-		    $parH = $('.showcase-media'),
-			$parAnchor = $parH.find('a');
-			$imgH = $parAnchor.children().height();
-
-		$parAnchor.hoverIntent(makeTall, makeShort);
-	    function makeTall(){$(this).parent().animate({ scrollTop: $imgH }, 6000);}
-        function makeShort(){$(this).parent().animate({ scrollTop: 0 }, 200);}
-		});
-	</script>
   </body>
 </html>
