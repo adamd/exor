@@ -21,13 +21,13 @@ function listeners() {
   });
 
   // Search details clicked
-  $('#showcase h2 a').click(function(e) {
+  $('#showcase .btn').click(function(e) {
     e.preventDefault();
     $('#showcase div').removeClass("selected");
 
-    var pdiv = $(e.target).parent().parent();
+    var pdiv = $(e.target).parent();
     pdiv = $(e.target).closest("div");
-    var prez = pdiv.attr("id");
+    var prez = pdiv.attr("id").replace("-details", "");
     pdiv.addClass("selected");
     call_details(prez, last_search, 1);
   });
@@ -85,8 +85,8 @@ function clear_search() {
 
 function update_president(prez, count) {
   // Update count
-  //$('#' + prez + ' h2 a').text(count); // direct update
-  $('#' + prez + ' h2 a').countTo({from: 0, to: count}); // animated count
+  //$('#' + prez + ' h2').text(count); // direct update
+  $('#' + prez + ' h2').countTo({from: 0, to: count}); // animated count
 
   // Update per day
   obamadays = 2151; // as of December 12, 2014
@@ -130,6 +130,12 @@ function call_details(prez, q, pg) {
       tr.appendTo("#results");
       fade_details(1);
     });
+    if (data.results.length == 100) {
+      var tr = $('<tr class="notation">').append(
+        $('<td colspan="2" style="text-align: center">').text("Results limited to first 100 executive orders")
+      );
+      tr.appendTo("#results");
+    }
   });
 }
 function fade_details(opacity) {

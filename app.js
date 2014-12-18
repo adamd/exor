@@ -86,7 +86,7 @@ server.route({
     path: '/details/{p}/{q}/{pg?}',
     handler: function (request, reply) {
       // Settings
-      var rpp = 10; // Results per page
+      var rpp = 100; // Results per page
 
       // Determine page
       var pg = parseInt(request.params.pg) ? encodeURIComponent(request.params.pg) : 1;
