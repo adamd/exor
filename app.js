@@ -43,7 +43,6 @@ server.route({
       // Determine query
       var search = "*";
       search = encodeURIComponent(request.params.q);
-console.log(search);
 
       var results = {};
       var db = require('orchestrate')(process.env.OIOKEY_EXOR);
@@ -66,7 +65,19 @@ console.log(search);
         .fail(function (err) {
           console.log('Oh sad, an error');
         });
+
       }
+      // Log search/results
+      var ip = request.raw.req.headers['x-forwarded-for'] || 
+           request.raw.req.connection.remoteAddress || 
+           request.raw.req.socket.remoteAddress ||
+           request.raw.req.connection.socket.remoteAddress;
+      var d = {
+        "term": search,
+        "searched_timestamp": Math.floor(new Date().getTime()/1000),
+        "ip": ip
+      };
+      db.post("search_log", d);
     }
 });
 // Load executive order details for one president
@@ -95,6 +106,7 @@ server.route({
         var db = require('orchestrate')(process.env.OIOKEY_EXOR);
         var sb = db.newSearchBuilder()
         .collection('exors_fulltext')
+        //.sort("signed_date", "desc")
         .limit(rpp);
         if (offset > 0) {
           sb.offset(offset);

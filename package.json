@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "hapi": "6.5.1",
-    "orchestrate": "0.3.4",
+    "orchestrate": "0.3.15",
     "handlebars": "2.0.0-alpha.4"
   },
   "engines": {

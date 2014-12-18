@@ -85,7 +85,8 @@ function clear_search() {
 
 function update_president(prez, count) {
   // Update count
-  $('#' + prez + ' h2 a').text(count);
+  //$('#' + prez + ' h2 a').text(count); // direct update
+  $('#' + prez + ' h2 a').countTo({from: 0, to: count}); // animated count
 
   // Update per day
   obamadays = 2151; // as of December 12, 2014
@@ -106,7 +107,13 @@ function update_president(prez, count) {
     }
     days = days.toFixed(2);
   }
-  $('#' + prez + '-days').text(days);
+  //$('#' + prez + '-days').text(days); // direct update
+  $('#' + prez + '-days').countTo({
+    from: 0, to: days, 
+    formatter: function(value, options){
+      return value.toFixed(2);
+    }
+  }); // animated count
 }
 
 // FUNCTIONS FOR DETAIL SEARCH
