@@ -128,7 +128,6 @@ function call_details(prez, q, pg) {
         $('<td>').append($('<a>').text(item.title).attr('href', item.url))
       );
       tr.appendTo("#results");
-      fade_details(1);
     });
     if (data.results.length == 100) {
       var tr = $('<tr class="notation">').append(
@@ -136,8 +135,21 @@ function call_details(prez, q, pg) {
       );
       tr.appendTo("#results");
     }
+    fade_details(1);
+    $.scrollTo("#features", 1000, {offset:-150});
   });
 }
 function fade_details(opacity) {
-  $('#features').fadeTo(500, opacity);
+  var dpane = $('#features');
+  switch (opacity) {
+    case 0:
+      dpane.fadeOut();
+    break;
+    case 1:
+      dpane.fadeIn();
+    break;
+    default:
+      dpane.fadeTo(500, opacity);
+    break;
+  }
 }
